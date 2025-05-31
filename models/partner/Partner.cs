@@ -3,7 +3,6 @@
     public class Partner
     {
         public int id { get; set; }
-        public PartnerType partnerType { get; set; } = null!;
         
         public string address { get; set; } = null!;
 
@@ -17,6 +16,7 @@
         public string logo { get; set; } = null!;
 
         public double rating { get; set; }
+        public PartnerType partnerType { get; set; } = null!;
 
         public PlaceForSale placeForSale { get; set; } = null!;
 

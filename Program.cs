@@ -28,7 +28,7 @@ namespace application
 
                     Partner partner = new Partner
                     {
-                        patrnerType = type1,
+                        partnerType = type1,
                         address = "г. Екатеринбург, ул. Столичная, 9",
                         INN = 231312312312,
                         directorName = "Попов Владимир Николаевич",
@@ -40,7 +40,7 @@ namespace application
                     };
                     Partner partner1 = new Partner
                     {
-                        patrnerType = type2,
+                        partnerType = type2,
                         address = "г. Москва, ул. Столичная, 9",
                         INN = 235235235,
                         directorName = "Попов Алексей Петрович",
@@ -52,7 +52,7 @@ namespace application
                     };
                     Partner partner2 = new Partner
                     {
-                        patrnerType = type3,
+                        partnerType = type3,
                         address = "г. Санкт-Петербург, ул. Столичная, 9",
                         INN = 321412412,
                         directorName = "Попов Роман Федерович",

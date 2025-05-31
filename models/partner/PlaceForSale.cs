@@ -9,7 +9,7 @@ namespace application.models.partner
     public class PlaceForSale
     {
         public int id { get; set; }
-        public string? name { get; set; }
+        public string name { get; set; } = null!;
         public List<Partner> Partners { get; set; } = new();
     }
 }

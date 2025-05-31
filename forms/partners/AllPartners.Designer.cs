@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            button1 = new Button();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
             dataGridView1 = new DataGridView();
-            button1 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -51,6 +51,18 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1000, 181);
             panel1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(103, 186, 128);
+            button1.Font = new Font("Segoe UI", 16F);
+            button1.Location = new Point(856, 39);
+            button1.Name = "button1";
+            button1.Size = new Size(123, 74);
+            button1.TabIndex = 2;
+            button1.Text = "Назад";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label1
             // 
@@ -89,18 +101,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(715, 469);
             dataGridView1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.FromArgb(103, 186, 128);
-            button1.Font = new Font("Segoe UI", 16F);
-            button1.Location = new Point(856, 39);
-            button1.Name = "button1";
-            button1.Size = new Size(123, 74);
-            button1.TabIndex = 2;
-            button1.Text = "Назад";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // AllPartners
             // 

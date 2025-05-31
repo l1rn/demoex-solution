@@ -1,4 +1,5 @@
 using application.forms;
+using application.forms.partners;
 
 namespace application
 {
@@ -14,6 +15,13 @@ namespace application
             AllPartners allPartners = new AllPartners();
 
             allPartners.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddPartner addPartner = new AddPartner();
+
+            addPartner.Show();
         }
     }
 }
