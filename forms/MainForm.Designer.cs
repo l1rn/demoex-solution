@@ -92,8 +92,9 @@
             button3.Name = "button3";
             button3.Size = new Size(250, 74);
             button3.TabIndex = 2;
-            button3.Text = "Изменить партнера";
+            button3.Text = "История реализации продукции";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
