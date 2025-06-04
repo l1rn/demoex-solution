@@ -2,12 +2,13 @@
 
 namespace application.models.product
 {
-    class Product
+    public class Product
     {
-        int id { get; set; }
-        string name { get; set; } = null!;
-        int quantity { get; set; }
+        public int id { get; set; }
+        public string name { get; set; } = null!;
+        public int needMaterial { get; set; }
 
-        
+        public Material material { get; set; } = null!;
+        public ProductType productType { get; set; } = null!;
     }
 }

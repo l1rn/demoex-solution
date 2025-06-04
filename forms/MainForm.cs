@@ -30,5 +30,12 @@ namespace application
 
             historyPartner.Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            EditPartner editPartner = new EditPartner();
+
+            editPartner.Show();
+        }
     }
 }

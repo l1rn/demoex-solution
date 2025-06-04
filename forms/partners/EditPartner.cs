@@ -1,15 +1,27 @@
-﻿
-using application.models.partner;
+﻿using application.models.partner;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace application.forms.partners
 {
-    public partial class AddPartner : Form
+    public partial class EditPartner : Form
     {
-        public AddPartner()
+        private int id = -1;
+        private int maxId = 0;
+        private int minId = 1;
+
+        public EditPartner()
         {
             InitializeComponent();
-            LoadComboBoxes();
+            LoadPartners();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -17,10 +29,37 @@ namespace application.forms.partners
             this.Close();
         }
 
-        private void LoadComboBoxes()
+        private void EditPartner_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoadPartners()
         {
             using (var db = new models.ApplicationContext())
             {
+                var partners = db.partners
+                    .Include(p => p.partnerType)
+                    .Include(p => p.placeForSale)
+                    .Select(p => new
+                    {
+                        p.id,
+                        p.directorName,
+                        p.address,
+                        p.phone,
+                        p.INN,
+                        p.email,
+                        partnerType = p.partnerType.name,
+                        placeForSale = p.placeForSale.name,
+                        p.rating
+                    })
+                    .ToList();
+                maxId = partners.Count();
+                if (id == -1)
+                {
+                    id = partners.First().id;
+                }
+                var partner = db.partners.Find(id);
 
                 comboBox1.DisplayMember = "name";
                 comboBox1.ValueMember = "id";
@@ -29,10 +68,40 @@ namespace application.forms.partners
                 comboBox2.DisplayMember = "name";
                 comboBox2.ValueMember = "id";
                 comboBox2.DataSource = db.placeForSales.ToList();
+
+                textBox1.Text = partner.directorName;
+                textBox2.Text = partner.address;
+                textBox3.Text = partner.phone;
+                textBox4.Text = partner.INN.ToString();
+                textBox5.Text = partner.rating.ToString();
+                textBox6.Text = partner.email;
+
             }
         }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (id >= maxId)
+            {
+                MessageBox.Show("НЕВАЛЯШКА БОльтшкуцйекцуепку");
+                return;
+            }
+            id++;
+            LoadPartners();
+        }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (id <= minId)
+            {
+                MessageBox.Show("НЕВАЛЯШКА МЕНЬШЕ");
+                return;
+            }
+
+            id--;
+            LoadPartners();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
         {
             string directorNameText = textBox1.Text;
             string addressText = textBox2.Text;
@@ -115,43 +184,30 @@ namespace application.forms.partners
                     return;
                 }
 
-                var newPartner = new Partner
-                {
-                    directorName = directorNameText,
-                    address = addressText,
-                    INN = innToLong,
-                    phone = phoneText,
-                    email = emailText,
-                    logo = "none",
-                    rating = ratingToDouble,
-                    partnerType = stringToType,
-                    placeForSale = placeForSaleText
-                };
-
+                
                 try
                 {
-                    db.partners.Add(newPartner);
+
+                    Partner existPartner = db.partners.Find(id);
+                    existPartner.id = id;
+                    existPartner.directorName = directorNameText;
+                    existPartner.address = addressText;
+                    existPartner.phone = phoneText;
+                    existPartner.email = emailText;
+                    existPartner.logo = "NONE";
+                    existPartner.rating = ratingToDouble;
+                    existPartner.partnerType = stringToType;
+                    existPartner.placeForSale = placeForSaleText;
                     db.SaveChanges();
-                    MessageBox.Show("Персона успешно добавлена!");
-                    textBox1.Text = "";
-                    textBox2.Text = "";
-                    textBox3.Text = "";
-                    textBox4.Text = "";
-                    textBox5.Text = "";
-                    textBox6.Text = "";
+                    MessageBox.Show("Персона успешно сохранена!");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Не удалось добавить партнера!");
+                    MessageBox.Show("Не удалось видо-изменить партнера!");
                     MessageBox.Show(ex.Message);
                 }
 
             }
-        }
-
-        private void AddPartner_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

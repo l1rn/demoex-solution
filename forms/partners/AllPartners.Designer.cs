@@ -112,6 +112,7 @@
             Controls.Add(panel1);
             Name = "AllPartners";
             Text = "Form1";
+            Load += AllPartners_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

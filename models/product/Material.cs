@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace application.models.product
 {
-    class Material
+    public class Material
     {
+        public int id { get; set; }
+        public string name { get; set; } = null!;
+        public double brakePercent { get; set; }
     }
 }

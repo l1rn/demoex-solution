@@ -1,6 +1,9 @@
 ﻿using application.models;
 using application.models.partner;
+using application.models.product;
+using application.models.sales;
 using Microsoft.EntityFrameworkCore;
+using System.Xml.Linq;
 namespace application
 {
     internal static class Program
@@ -62,9 +65,57 @@ namespace application
                         rating = 4.7,
                         placeForSale = sale3
                     };
+                    
 
                     db.partners.AddRange(partner, partner1, partner2);
                     db.SaveChanges();
+                }
+                if(!db.materials.Any())
+                {
+                    Material material1 = new Material
+                    {
+                        name = "Дерево Береза",
+                        brakePercent = 0.5
+                    };
+                    Material material2 = new Material
+                    {
+                        name = "Дерево Крутое",
+                        brakePercent = 1
+                    };
+                    Material material3 = new Material
+                    {
+                        name = "Дерево Дуб",
+                        brakePercent = 0.5
+                    };
+                    if (!db.productsType.Any())
+                    {
+                        ProductType productType1 = new ProductType
+                        {
+                            name = "Игрушка",
+                            cofficient = 0.2
+                        };
+                        if (!db.products.Any())
+                        {
+                            Product product1 = new Product
+                            {
+                                name = "Игрушка деревянная",
+                                needMaterial = 3,
+                                material = material1,
+                                productType = productType1
+                            };
+
+                            if (!db.salesForPartners.Any())
+                            {
+                                SalesForPartner salesForPartner = new SalesForPartner
+                                {
+                                    date = "20.11.2025",
+                                    product = product1,
+                                    partner = db.partners.Find(1),
+                                    quantity = 5
+                                };
+                            }
+                        }
+                    }
                 }
                 
             }

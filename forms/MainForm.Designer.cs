@@ -36,6 +36,7 @@
             button3 = new Button();
             button2 = new Button();
             button1 = new Button();
+            button4 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -75,6 +76,7 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(244, 232, 211);
+            panel2.Controls.Add(button4);
             panel2.Controls.Add(button3);
             panel2.Controls.Add(button2);
             panel2.Controls.Add(button1);
@@ -112,13 +114,25 @@
             // 
             button1.BackColor = Color.FromArgb(103, 186, 128);
             button1.Font = new Font("Segoe UI", 16F);
-            button1.Location = new Point(376, 47);
+            button1.Location = new Point(498, 50);
             button1.Name = "button1";
             button1.Size = new Size(250, 74);
             button1.TabIndex = 0;
             button1.Text = "Добавить партнера";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.FromArgb(103, 186, 128);
+            button4.Font = new Font("Segoe UI", 16F);
+            button4.Location = new Point(224, 50);
+            button4.Name = "button4";
+            button4.Size = new Size(250, 74);
+            button4.TabIndex = 3;
+            button4.Text = "Редактирование партнеров";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // MainForm
             // 
@@ -145,5 +159,6 @@
         private Button button1;
         private Button button3;
         private Button button2;
+        private Button button4;
     }
 }

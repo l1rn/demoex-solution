@@ -1,4 +1,6 @@
 ﻿using application.models.partner;
+using application.models.product;
+using application.models.sales;
 using Microsoft.EntityFrameworkCore;
 
 namespace application.models
@@ -8,6 +10,11 @@ namespace application.models
         public DbSet<PartnerType> partnerTypes { get; set; }
         public DbSet<PlaceForSale> placeForSales { get; set; }
         public DbSet<Partner> partners { get; set; }
+        public DbSet<Material> materials { get; set; }
+        public DbSet<Product> products { get; set; }
+        public DbSet<ProductType> productsType { get; set; }
+        public DbSet<SalesForPartner> salesForPartners { get; set; }
+
         public ApplicationContext()
         {
             Database.EnsureCreated();

@@ -89,5 +89,10 @@ namespace application.forms
         {
 
         }
+
+        private void AllPartners_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

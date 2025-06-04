@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace application.models.product
 {
-    class ProductType
+    public class ProductType
     {
+        public int id { get; set; }
+        public string name { get; set; } = null!;
+        public double cofficient { get; set; }
     }
 }
